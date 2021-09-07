@@ -469,7 +469,7 @@
 			},
 			"SQLDedicatedPoolName": {
 				"type": "string",
-				"defaultValue": "p5f3stqbff4ndtdspocws1p1"
+				"defaultValue": "p5f3stqbff4ndtdspocws1.sql.azuresynapse.net"
 			},
 			"SQLLoginUsername": {
 				"type": "string",
