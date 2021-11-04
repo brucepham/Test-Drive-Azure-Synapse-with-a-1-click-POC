@@ -1,0 +1,21 @@
+{
+	"name": "cosmoseastusbp",
+	"properties": {
+		"annotations": [],
+		"type": "CosmosDb",
+		"typeProperties": {
+			"connectionString": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "keyvaulteastusbp",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "cosmoseastusbpconnectionstr"
+			}
+		},
+		"connectVia": {
+			"referenceName": "AutoResolveIntegrationRuntime",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}
