@@ -17,7 +17,7 @@
 				"spark.dynamicAllocation.enabled": "false",
 				"spark.dynamicAllocation.minExecutors": "19",
 				"spark.dynamicAllocation.maxExecutors": "19",
-				"spark.autotune.trackingId": "7e1d2612-03e7-42be-bc55-7df316a47860"
+				"spark.autotune.trackingId": "afaaf368-7ca8-4e77-97b3-73968dbf73f1"
 			}
 		},
 		"metadata": {
@@ -25,7 +25,7 @@
 			"enableDebugMode": false,
 			"kernelspec": {
 				"name": "synapse_pyspark",
-				"display_name": "python"
+				"display_name": "Synapse PySpark"
 			},
 			"language_info": {
 				"name": "python"
@@ -50,19 +50,22 @@
 		"cells": [
 			{
 				"cell_type": "code",
+				"metadata": {
+					"collapsed": false
+				},
 				"source": [
 					"# Read from Cosmos DB analytical store into a Spark DataFrame and display 10 rows from the DataFrame\n",
 					"# To select a preferred list of regions in a multi-region Cosmos DB account, add .option(\"spark.cosmos.preferredRegions\", \"<Region1>,<Region2>\")\n",
 					"\n",
 					"df = spark.read\\\n",
 					"    .format(\"cosmos.olap\")\\\n",
-					"    .option(\"spark.synapse.linkedService\", \"cosmoseastusbp\")\\\n",
+					"    .option(\"spark.synapse.linkedService\", \"cosmoseastusbp3\")\\\n",
 					"    .option(\"spark.cosmos.container\", \"nyctaxi\")\\\n",
 					"    .load()\n",
 					"\n",
 					"display(df.limit(10))"
 				],
-				"execution_count": null
+				"execution_count": 4
 			}
 		]
 	}
