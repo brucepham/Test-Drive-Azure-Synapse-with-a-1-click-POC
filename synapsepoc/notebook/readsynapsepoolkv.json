@@ -17,7 +17,7 @@
 				"spark.dynamicAllocation.enabled": "false",
 				"spark.dynamicAllocation.minExecutors": "19",
 				"spark.dynamicAllocation.maxExecutors": "19",
-				"spark.autotune.trackingId": "2b3e2178-74c8-4b09-853a-a4afd7e14eac"
+				"spark.autotune.trackingId": "f9b19c4e-9797-42a3-b41d-389742eb1108"
 			}
 		},
 		"metadata": {
@@ -64,7 +64,7 @@
 					"print(synapseusername)\r\n",
 					"print(synapsepassword)"
 				],
-				"execution_count": 6
+				"execution_count": 11
 			},
 			{
 				"cell_type": "code",
