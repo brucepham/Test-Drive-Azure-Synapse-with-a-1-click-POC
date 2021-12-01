@@ -267,7 +267,8 @@
 								"coreCount": 8,
 								"computeType": "General"
 							},
-							"traceLevel": "Fine"
+							"traceLevel": "Fine",
+							"continuationSettings": {}
 						}
 					},
 					{
@@ -1431,7 +1432,7 @@
 			"apiVersion": "2019-06-01-preview",
 			"properties": {
 				"content": {
-					"query": "IF (NOT EXISTS(SELECT * FROM sys.credentials WHERE name = 'cosmoseastusbp'))\n    THROW 50000, 'As a prerequisite, create a credential with Azure Cosmos DB key in SECRET option:\n    CREATE CREDENTIAL [cosmoseastusbp]\n    WITH IDENTITY = ''SHARED ACCESS SIGNATURE'', SECRET = ''<Enter your Azure Cosmos DB key here>''', 0\nGO\n\nSELECT TOP 100 *\nFROM OPENROWSET(​PROVIDER = 'CosmosDB',\n                CONNECTION = 'Account=cosmoseastusbp;Database=database01',\n                OBJECT = 'nyctaxi',\n                SERVER_CREDENTIAL = 'cosmoseastusbp'\n) AS [nyctaxi]\n",
+					"query": "IF (NOT EXISTS(SELECT * FROM sys.credentials WHERE name = 'cosmoseastusbp'))\n    THROW 50000, 'As a prerequisite, create a credential with Azure Cosmos DB key in SECRET option:\n    CREATE CREDENTIAL [cosmoseastusbp]\n    WITH IDENTITY = ''SHARED ACCESS SIGNATURE'', SECRET = ''<Enter your Azure Cosmos DB key here>''', 0\nGO\n\nSELECT TOP 100 *\nFROM OPENROWSET(​PROVIDER = 'CosmosDB',\n                CONNECTION = 'Account=cosmoseastusbp;Database=database01',\n                OBJECT = 'nyctaxi',\n                SERVER_CREDENTIAL = 'cosmoseastusbp'\n) AS [nyctaxi]\n\n\n-- create credential\nCREATE CREDENTIAL cosmoseastusbp\nWITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 'G6QOPNsMOqK7VbRI8hYsKmV4OTTPt3zHEqz98ZVdbIghNl0BKUqxNFrZzPnOhOkTHZRUxFeKm8ARSRCYAJwKnQ==';\n\nCREATE CREDENTIAL cosmoseastusbpsas\nWITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 'G6QOPNsMOqK7VbRI8hYsKmV4OTTPt3zHEqz98ZVdbIghNl0BKUqxNFrZzPnOhOkTHZRUxFeKm8ARSRCYAJwKnQ==';\n\n\nSELECT TOP 100 *\nFROM OPENROWSET(​PROVIDER = 'CosmosDB',\n                CONNECTION = 'Account=cosmoseastusbp;Database=database01',\n                OBJECT = 'nyctaxi',\n                SERVER_CREDENTIAL = 'cosmoseastusbpsas'\n) AS [nyctaxi]\n",
 					"metadata": {
 						"language": "sql"
 					},
@@ -1893,7 +1894,7 @@
 						"spark.dynamicAllocation.enabled": "false",
 						"spark.dynamicAllocation.minExecutors": "19",
 						"spark.dynamicAllocation.maxExecutors": "19",
-						"spark.autotune.trackingId": "6b2c69f0-4b06-436e-986d-4c268a8a41a7"
+						"spark.autotune.trackingId": "f9b19c4e-9797-42a3-b41d-389742eb1108"
 					}
 				},
 				"metadata": {
@@ -1918,10 +1919,8 @@
 						"sparkVersion": "2.4",
 						"nodeCount": 5,
 						"cores": 4,
-						"memory": 28,
-						"automaticScaleJobs": false
-					},
-					"sessionKeepAliveTimeout": 30
+						"memory": 28
+					}
 				},
 				"cells": [
 					{
@@ -2017,7 +2016,6 @@
 			"properties": {
 				"collation": "SQL_Latin1_General_CP1_CI_AS",
 				"maxSizeBytes": 263882790666240,
-				"restorePointInTime": "0001-01-01T00:00:00",
 				"annotations": []
 			},
 			"dependsOn": [],
