@@ -3,6 +3,10 @@
 	"properties": {
 		"nbformat": 4,
 		"nbformat_minor": 2,
+		"bigDataPool": {
+			"referenceName": "ws1sparkpool1",
+			"type": "BigDataPoolReference"
+		},
 		"sessionProperties": {
 			"driverMemory": "28g",
 			"driverCores": 4,
@@ -13,7 +17,7 @@
 				"spark.dynamicAllocation.enabled": "false",
 				"spark.dynamicAllocation.minExecutors": "2",
 				"spark.dynamicAllocation.maxExecutors": "2",
-				"spark.autotune.trackingId": "6b79dd8c-398c-4c0c-9c95-6465cbcedb97"
+				"spark.autotune.trackingId": "43fc6689-d95d-4a30-9346-266c1e8bc1a6"
 			}
 		},
 		"metadata": {
@@ -25,6 +29,21 @@
 			},
 			"language_info": {
 				"name": "python"
+			},
+			"a365ComputeOptions": {
+				"id": "/subscriptions/7624bba7-3cf9-4fb2-8ba9-47144a007cd6/resourceGroups/synapsetaxidemo/providers/Microsoft.Synapse/workspaces/p5f3stqbff4ndtdspocws1/bigDataPools/ws1sparkpool1",
+				"name": "ws1sparkpool1",
+				"type": "Spark",
+				"endpoint": "https://p5f3stqbff4ndtdspocws1.dev.azuresynapse.net/livyApi/versions/2019-11-01-preview/sparkPools/ws1sparkpool1",
+				"auth": {
+					"type": "AAD",
+					"authResource": "https://dev.azuresynapse.net"
+				},
+				"sparkVersion": "2.4",
+				"nodeCount": 5,
+				"cores": 4,
+				"memory": 28,
+				"automaticScaleJobs": false
 			},
 			"sessionKeepAliveTimeout": 30
 		},
@@ -54,6 +73,181 @@
 					"    load()"
 				],
 				"execution_count": 10
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"microsoft": {
+						"language": "scala"
+					}
+				},
+				"source": [
+					"%%spark\r\n",
+					"val df = spark.read.\r\n",
+					"    format(\"cosmos.olap\").\r\n",
+					"    option(\"spark.synapse.linkedService\", \"cosmoseastusbp3\").\r\n",
+					"    option(\"spark.cosmos.container\", \"ps2\").\r\n",
+					"    load()"
+				],
+				"execution_count": 10
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"collapsed": false
+				},
+				"source": [
+					"display(df.limit(10))\r\n",
+					""
+				],
+				"execution_count": 11
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"microsoft": {
+						"language": "scala"
+					},
+					"collapsed": false
+				},
+				"source": [
+					"%%spark\r\n",
+					"display(df.limit(10))"
+				],
+				"execution_count": 12
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					}
+				},
+				"source": [
+					"\r\n",
+					"\r\n",
+					"val df_sel = df.select(\r\n",
+					"\"shipToKey\",\r\n",
+					"\"shipToId\",\r\n",
+					"\"shipToNbr\",\r\n",
+					"\"companyCodeId\",\r\n",
+					"\"addressLine1\",\r\n",
+					"\"addressLine2\",\r\n",
+					"\"cityName\",\r\n",
+					"\"stateAbbrCode\",\r\n",
+					"\"zipCode\",\r\n",
+					"\"accountRepName\",\r\n",
+					"\"accountRepNbr\",\r\n",
+					"\"shipToName\",\r\n",
+					"\"contactName\",\r\n",
+					"\"contactPhoneNbr\",\r\n",
+					"\"contactFaxNbr\",\r\n",
+					"\"contactEmailAddress\",\r\n",
+					"\"oracleCostCenterNbr\",\r\n",
+					"\"costCenterNbr\",\r\n",
+					"\"retailWholesaleInd\",\r\n",
+					"\"inServiceDate\",\r\n",
+					"\"outServiceDate\",\r\n",
+					"\"fuelBrandId\",\r\n",
+					"\"salesGroupId\",\r\n",
+					"\"salesOfficeId\",\r\n",
+					"\"dbaName\",\r\n",
+					"\"channelOfTradeId\",\r\n",
+					"\"creditCardAddressLine1\",\r\n",
+					"\"creditCardAddressLine2\",\r\n",
+					"\"creditCardCityName\",\r\n",
+					"\"creditCardStateAbbr\",\r\n",
+					"\"creditCardZipCode\",\r\n",
+					"\"previousSiteNbr\",\r\n",
+					"\"updateUser\",\r\n",
+					"\"updateDate\",\r\n",
+					"\"createDate\",\r\n",
+					"\"uarStoreNbr\",\r\n",
+					"\"billToAddressLine1\",\r\n",
+					"\"billToAddressLine2\",\r\n",
+					"\"billToCityName\",\r\n",
+					"\"billToStateAbbrCode\",\r\n",
+					"\"billToZipCode\",\r\n",
+					"\"companyBrandId\",\r\n",
+					"\"feePackageId\",\r\n",
+					"\"statusFlag\",\r\n",
+					"\"salesDistrictId\",\r\n",
+					"\"masterMerchCodeId\",\r\n",
+					"\"verNbr\",\r\n",
+					"\"delInd\",\r\n",
+					"\"createUser\",\r\n",
+					"\"feePackageUpdateFlag\",\r\n",
+					"\"effectiveEndDate\",\r\n",
+					"\"effectiveStartDate\",\r\n",
+					"\"customerGroup\",\r\n",
+					"\"accountType\",\r\n",
+					"\"countyName\",\r\n",
+					"\"merchantCategoryCode\",\r\n",
+					"\"consigneeSoldToNbr\",\r\n",
+					"\"nonFuelShipToNbr\",\r\n",
+					"\"cbOverrideStartDate\",\r\n",
+					"\"cbOverrideEndDate\")"
+				],
+				"execution_count": 3
+			},
+			{
+				"cell_type": "code",
+				"metadata": {
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"microsoft": {
+						"language": "scala"
+					}
+				},
+				"source": [
+					"%%spark\r\n",
+					"val df = spark.read.\r\n",
+					"    format(\"cosmos.olap\").\r\n",
+					"    option(\"spark.synapse.linkedService\", \"ls_azrps2cdb01r1\").\r\n",
+					"    option(\"spark.cosmos.container\", \"DimensionData\").\r\n",
+					"    load()"
+				],
+				"execution_count": null
 			},
 			{
 				"cell_type": "code",
