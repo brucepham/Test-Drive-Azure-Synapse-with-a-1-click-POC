@@ -1,0 +1,17 @@
+{
+	"name": "SQL script 2",
+	"properties": {
+		"content": {
+			"query": "CREATE DATABASE ps2database\n\n-- create master key that will protect the credentials:\n-- run on ps2database\nCREATE MASTER KEY ENCRYPTION BY PASSWORD = 'helloworld2022!'\n\nCREATE CREDENTIAL cosmoseastusbpsas\nWITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 'G6QOPNsMOqK7VbRI8hYsKmV4OTTPt3zHEqz98ZVdbIghNl0BKUqxNFrZzPnOhOkTHZRUxFeKm8ARSRCYAJwKnQ==';\n\nCREATE DATABASE SCOPED CREDENTIAL WorkspaceIdentity2\nWITH IDENTITY = 'Managed Identity'\n\nSELECT TOP 100 *\nFROM OPENROWSET(​PROVIDER = 'CosmosDB',\n                CONNECTION = 'Account=cosmoseastusbp;Database=database01',\n                OBJECT = 'nyctaxi',\n                SERVER_CREDENTIAL = 'cosmoseastusbpsas'\n) AS [nyctaxi]",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "ps2database",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}
