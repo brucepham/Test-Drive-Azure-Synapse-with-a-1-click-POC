@@ -21,7 +21,8 @@
 					},
 					"parameters": {
 						"linkservicename": {
-							"value": "cosmoseastusbp3"
+							"value": "cosmoseastusbp3",
+							"type": "string"
 						}
 					},
 					"snapshot": true
