@@ -17,7 +17,7 @@
 				"spark.dynamicAllocation.enabled": "false",
 				"spark.dynamicAllocation.minExecutors": "2",
 				"spark.dynamicAllocation.maxExecutors": "2",
-				"spark.autotune.trackingId": "cc06b3ee-7619-4fbd-89e1-bddc65183f1a"
+				"spark.autotune.trackingId": "2a51c06f-1502-4479-9d60-e219fad53675"
 			}
 		},
 		"metadata": {
@@ -62,17 +62,17 @@
 					},
 					"microsoft": {
 						"language": "scala"
-					}
+					},
+					"tags": [
+						"parameters"
+					]
 				},
 				"source": [
 					"%%spark\r\n",
-					"val df = spark.read.\r\n",
-					"    format(\"cosmos.olap\").\r\n",
-					"    option(\"spark.synapse.linkedService\", \"ls_azrps2cdb01r1\").\r\n",
-					"    option(\"spark.cosmos.container\", \"DimensionData\").\r\n",
-					"    load()"
+					"\r\n",
+					"val tablename = \"p5f3stqbff4ndtdspocws1p1.dbo.dimCustomerShipTo_spark4\""
 				],
-				"execution_count": 4
+				"execution_count": 14
 			},
 			{
 				"cell_type": "code",
@@ -98,27 +98,7 @@
 					"    option(\"spark.cosmos.container\", \"ps2\").\r\n",
 					"    load()"
 				],
-				"execution_count": 1
-			},
-			{
-				"cell_type": "code",
-				"metadata": {
-					"jupyter": {
-						"source_hidden": false,
-						"outputs_hidden": false
-					},
-					"nteract": {
-						"transient": {
-							"deleting": false
-						}
-					},
-					"collapsed": false
-				},
-				"source": [
-					"display(df.limit(10))\r\n",
-					""
-				],
-				"execution_count": 11
+				"execution_count": 8
 			},
 			{
 				"cell_type": "code",
@@ -141,7 +121,7 @@
 					"%%spark\r\n",
 					"display(df.limit(10))"
 				],
-				"execution_count": 13
+				"execution_count": 9
 			},
 			{
 				"cell_type": "code",
@@ -224,7 +204,7 @@
 					"\"cbOverrideStartDate\",\r\n",
 					"\"cbOverrideEndDate\")"
 				],
-				"execution_count": 2
+				"execution_count": 10
 			},
 			{
 				"cell_type": "code",
@@ -247,79 +227,6 @@
 					"%%spark\r\n",
 					"display(df_sel.limit(10))"
 				],
-				"execution_count": 19
-			},
-			{
-				"cell_type": "code",
-				"metadata": {
-					"jupyter": {
-						"source_hidden": false,
-						"outputs_hidden": false
-					},
-					"nteract": {
-						"transient": {
-							"deleting": false
-						}
-					},
-					"microsoft": {
-						"language": "scala"
-					}
-				},
-				"source": [
-					"%%spark\r\n",
-					"import com.microsoft.spark.sqlanalytics.utils.Constants\r\n",
-					"import org.apache.spark.sql.SqlAnalyticsConnector._\r\n",
-					" \r\n",
-					"df_sel.write.synapsesql(\"p5f3stqbff4ndtdspocws1p1.dbo.dimCustomerShipTo_spark2\", Constants.INTERNAL)"
-				],
-				"execution_count": 3
-			},
-			{
-				"cell_type": "code",
-				"metadata": {
-					"jupyter": {
-						"source_hidden": false,
-						"outputs_hidden": false
-					},
-					"nteract": {
-						"transient": {
-							"deleting": false
-						}
-					},
-					"microsoft": {
-						"language": "scala"
-					}
-				},
-				"source": [
-					"%%spark\r\n",
-					"val df = spark.read.\r\n",
-					"    format(\"cosmos.olap\").\r\n",
-					"    option(\"spark.synapse.linkedService\", \"ls_azrps2cdb01r1\").\r\n",
-					"    option(\"spark.cosmos.container\", \"DimensionData\").\r\n",
-					"    load()"
-				],
-				"execution_count": null
-			},
-			{
-				"cell_type": "code",
-				"metadata": {
-					"jupyter": {
-						"source_hidden": false,
-						"outputs_hidden": false
-					},
-					"nteract": {
-						"transient": {
-							"deleting": false
-						}
-					},
-					"microsoft": {
-						"language": "scala"
-					}
-				},
-				"source": [
-					"%%spark\r\n",
-					"val df_soldTo = df.where(col(\"TableName\") === \"shipTo\")"
-				],
 				"execution_count": 11
 			},
 			{
@@ -340,94 +247,12 @@
 				},
 				"source": [
 					"%%spark\r\n",
-					"val df_sel = df_soldTo.select(\r\n",
-					"\"shipToKey\",\r\n",
-					"\"shipToId\",\r\n",
-					"\"shipToNbr\",\r\n",
-					"\"companyCodeId\",\r\n",
-					"\"addressLine1\",\r\n",
-					"\"addressLine2\",\r\n",
-					"\"cityName\",\r\n",
-					"\"stateAbbrCode\",\r\n",
-					"\"zipCode\",\r\n",
-					"\"accountRepName\",\r\n",
-					"\"accountRepNbr\",\r\n",
-					"\"shipToName\",\r\n",
-					"\"contactName\",\r\n",
-					"\"contactPhoneNbr\",\r\n",
-					"\"contactFaxNbr\",\r\n",
-					"\"contactEmailAddress\",\r\n",
-					"\"oracleCostCenterNbr\",\r\n",
-					"\"costCenterNbr\",\r\n",
-					"\"retailWholesaleInd\",\r\n",
-					"\"inServiceDate\",\r\n",
-					"\"outServiceDate\",\r\n",
-					"\"fuelBrandId\",\r\n",
-					"\"salesGroupId\",\r\n",
-					"\"salesOfficeId\",\r\n",
-					"\"dbaName\",\r\n",
-					"\"channelOfTradeId\",\r\n",
-					"\"creditCardAddressLine1\",\r\n",
-					"\"creditCardAddressLine2\",\r\n",
-					"\"creditCardCityName\",\r\n",
-					"\"creditCardStateAbbr\",\r\n",
-					"\"creditCardZipCode\",\r\n",
-					"\"previousSiteNbr\",\r\n",
-					"\"updateUser\",\r\n",
-					"\"updateDate\",\r\n",
-					"\"createDate\",\r\n",
-					"\"uarStoreNbr\",\r\n",
-					"\"billToAddressLine1\",\r\n",
-					"\"billToAddressLine2\",\r\n",
-					"\"billToCityName\",\r\n",
-					"\"billToStateAbbrCode\",\r\n",
-					"\"billToZipCode\",\r\n",
-					"\"companyBrandId\",\r\n",
-					"\"feePackageId\",\r\n",
-					"\"statusFlag\",\r\n",
-					"\"salesDistrictId\",\r\n",
-					"\"masterMerchCodeId\",\r\n",
-					"\"verNbr\",\r\n",
-					"\"delInd\",\r\n",
-					"\"createUser\",\r\n",
-					"\"feePackageUpdateFlag\",\r\n",
-					"\"effectiveEndDate\",\r\n",
-					"\"effectiveStartDate\",\r\n",
-					"\"customerGroup\",\r\n",
-					"\"accountType\",\r\n",
-					"\"countyName\",\r\n",
-					"\"merchantCategoryCode\",\r\n",
-					"\"consigneeSoldToNbr\",\r\n",
-					"\"nonFuelShipToNbr\",\r\n",
-					"\"cbOverrideStartDate\",\r\n",
-					"\"cbOverrideEndDate\")"
-				],
-				"execution_count": 12
-			},
-			{
-				"cell_type": "code",
-				"metadata": {
-					"jupyter": {
-						"source_hidden": false,
-						"outputs_hidden": false
-					},
-					"nteract": {
-						"transient": {
-							"deleting": false
-						}
-					},
-					"microsoft": {
-						"language": "scala"
-					}
-				},
-				"source": [
-					"%%spark\r\n",
 					"import com.microsoft.spark.sqlanalytics.utils.Constants\r\n",
 					"import org.apache.spark.sql.SqlAnalyticsConnector._\r\n",
 					" \r\n",
-					"df_sel.write.synapsesql(\"azrps2sqdw01r1.dbo.dimCustomerShipTo_spark\", Constants.INTERNAL)"
+					"df_sel.write.synapsesql(tablename, Constants.INTERNAL)"
 				],
-				"execution_count": 13
+				"execution_count": 15
 			}
 		]
 	}
