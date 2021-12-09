@@ -3214,7 +3214,7 @@
 						"spark.dynamicAllocation.enabled": "false",
 						"spark.dynamicAllocation.minExecutors": "2",
 						"spark.dynamicAllocation.maxExecutors": "2",
-						"spark.autotune.trackingId": "a87ea316-483d-46c0-99f3-99bc9f718257"
+						"spark.autotune.trackingId": "63d66fc3-597b-403d-9fb8-04bd9f117c68"
 					}
 				},
 				"metadata": {
@@ -3239,10 +3239,51 @@
 						"sparkVersion": "2.4",
 						"nodeCount": 5,
 						"cores": 4,
-						"memory": 28
-					}
+						"memory": 28,
+						"automaticScaleJobs": false
+					},
+					"sessionKeepAliveTimeout": 30
 				},
 				"cells": [
+					{
+						"cell_type": "code",
+						"metadata": {
+							"jupyter": {
+								"source_hidden": false,
+								"outputs_hidden": false
+							},
+							"nteract": {
+								"transient": {
+									"deleting": false
+								}
+							}
+						},
+						"source": [
+							"linkservicename = \"cosmoseastusbp3\""
+						],
+						"outputs": [],
+						"execution_count": 1
+					},
+					{
+						"cell_type": "code",
+						"metadata": {
+							"jupyter": {
+								"source_hidden": false,
+								"outputs_hidden": false
+							},
+							"nteract": {
+								"transient": {
+									"deleting": false
+								}
+							}
+						},
+						"source": [
+							"\r\n",
+							"spark.conf.set(\"mydata.linkservicename\", linkservicename)"
+						],
+						"outputs": [],
+						"execution_count": 2
+					},
 					{
 						"cell_type": "code",
 						"metadata": {
@@ -3265,7 +3306,7 @@
 						"source": [
 							"%%spark\r\n",
 							"\r\n",
-							"val linkservicename = \"cosmoseastusbp4\""
+							"val linkservicename = spark.conf.get(\"mydata.linkservicename\")"
 						],
 						"outputs": [],
 						"execution_count": 3
@@ -3288,6 +3329,7 @@
 						},
 						"source": [
 							"%%spark\r\n",
+							"\r\n",
 							"val df = spark.read.\r\n",
 							"    format(\"cosmos.olap\").\r\n",
 							"    option(\"spark.synapse.linkedService\", linkservicename).\r\n",
@@ -3296,6 +3338,31 @@
 						],
 						"outputs": [],
 						"execution_count": 4
+					},
+					{
+						"cell_type": "code",
+						"metadata": {
+							"jupyter": {
+								"source_hidden": false,
+								"outputs_hidden": false
+							},
+							"nteract": {
+								"transient": {
+									"deleting": false
+								}
+							},
+							"microsoft": {
+								"language": "scala"
+							},
+							"collapsed": false
+						},
+						"source": [
+							"%%spark\r\n",
+							"\r\n",
+							"display(df.limit(10))"
+						],
+						"outputs": [],
+						"execution_count": 5
 					}
 				]
 			},
