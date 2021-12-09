@@ -19,6 +19,11 @@
 						"referenceName": "testparampython",
 						"type": "NotebookReference"
 					},
+					"parameters": {
+						"linkservicename": {
+							"value": "cosmoseastusbp3"
+						}
+					},
 					"snapshot": true
 				}
 			}
