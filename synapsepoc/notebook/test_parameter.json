@@ -1,5 +1,5 @@
 {
-	"name": "CdbToDwDimCustomerShipTo",
+	"name": "test_parameter",
 	"properties": {
 		"nbformat": 4,
 		"nbformat_minor": 2,
@@ -17,7 +17,7 @@
 				"spark.dynamicAllocation.enabled": "false",
 				"spark.dynamicAllocation.minExecutors": "2",
 				"spark.dynamicAllocation.maxExecutors": "2",
-				"spark.autotune.trackingId": "bed0f8bf-1101-43c0-97d8-b16bc7effe79"
+				"spark.autotune.trackingId": "cc06b3ee-7619-4fbd-89e1-bddc65183f1a"
 			}
 		},
 		"metadata": {
