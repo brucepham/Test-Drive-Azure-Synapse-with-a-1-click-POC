@@ -1,5 +1,5 @@
 {
-	"name": "testparampython",
+	"name": "testpararmscala",
 	"properties": {
 		"nbformat": 4,
 		"nbformat_minor": 2,
@@ -12,12 +12,12 @@
 			"driverCores": 4,
 			"executorMemory": "28g",
 			"executorCores": 4,
-			"numExecutors": 19,
+			"numExecutors": 2,
 			"conf": {
 				"spark.dynamicAllocation.enabled": "false",
-				"spark.dynamicAllocation.minExecutors": "19",
-				"spark.dynamicAllocation.maxExecutors": "19",
-				"spark.autotune.trackingId": "1282a951-5a1e-4430-b6e4-e6349c5c6253"
+				"spark.dynamicAllocation.minExecutors": "2",
+				"spark.dynamicAllocation.maxExecutors": "2",
+				"spark.autotune.trackingId": "a87ea316-483d-46c0-99f3-99bc9f718257"
 			}
 		},
 		"metadata": {
@@ -60,33 +60,45 @@
 							"deleting": false
 						}
 					},
+					"microsoft": {
+						"language": "scala"
+					},
 					"tags": [
 						"parameters"
 					]
 				},
 				"source": [
-					"linkservicename = \"cosmoseastusbp4\""
+					"%%spark\r\n",
+					"\r\n",
+					"val linkservicename = \"cosmoseastusbp4\""
 				],
-				"execution_count": 1
+				"execution_count": 3
 			},
 			{
 				"cell_type": "code",
 				"metadata": {
-					"collapsed": false
+					"jupyter": {
+						"source_hidden": false,
+						"outputs_hidden": false
+					},
+					"nteract": {
+						"transient": {
+							"deleting": false
+						}
+					},
+					"microsoft": {
+						"language": "scala"
+					}
 				},
 				"source": [
-					"# Read from Cosmos DB analytical store into a Spark DataFrame and display 10 rows from the DataFrame\n",
-					"# To select a preferred list of regions in a multi-region Cosmos DB account, add .option(\"spark.cosmos.preferredRegions\", \"<Region1>,<Region2>\")\n",
-					"\n",
-					"df = spark.read\\\n",
-					"    .format(\"cosmos.olap\")\\\n",
-					"    .option(\"spark.synapse.linkedService\", linkservicename)\\\n",
-					"    .option(\"spark.cosmos.container\", \"nyctaxi\")\\\n",
-					"    .load()\n",
-					"\n",
-					"display(df.limit(10))"
+					"%%spark\r\n",
+					"val df = spark.read.\r\n",
+					"    format(\"cosmos.olap\").\r\n",
+					"    option(\"spark.synapse.linkedService\", linkservicename).\r\n",
+					"    option(\"spark.cosmos.container\", \"ps2\").\r\n",
+					"    load()"
 				],
-				"execution_count": 2
+				"execution_count": 4
 			}
 		]
 	}
