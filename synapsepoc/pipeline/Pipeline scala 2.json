@@ -37,7 +37,8 @@
 		],
 		"parameters": {
 			"containernameparam": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "testme"
 			}
 		},
 		"annotations": []
