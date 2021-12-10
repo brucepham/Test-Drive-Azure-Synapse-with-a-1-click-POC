@@ -23,12 +23,23 @@
 						"linkservicename": {
 							"value": "cosmoseastusbp3",
 							"type": "string"
+						},
+						"containername": {
+							"value": {
+								"value": "@pipeline().parameters.containernameparam",
+								"type": "Expression"
+							}
 						}
 					},
 					"snapshot": true
 				}
 			}
 		],
+		"parameters": {
+			"containernameparam": {
+				"type": "string"
+			}
+		},
 		"annotations": []
 	}
 }
