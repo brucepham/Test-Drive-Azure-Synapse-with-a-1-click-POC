@@ -21,7 +21,7 @@
 					},
 					"parameters": {
 						"linkservicename": {
-							"value": "cosmoseastusbp4",
+							"value": "cosmoseastusbp3",
 							"type": "string"
 						}
 					},
