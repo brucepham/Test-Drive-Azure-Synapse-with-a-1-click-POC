@@ -17,7 +17,7 @@
 				"spark.dynamicAllocation.enabled": "false",
 				"spark.dynamicAllocation.minExecutors": "2",
 				"spark.dynamicAllocation.maxExecutors": "2",
-				"spark.autotune.trackingId": "46fe230a-1412-4700-b0e8-797310b1dcaf"
+				"spark.autotune.trackingId": "33914156-74ea-41f0-b7a5-3aadef90b1c3"
 			}
 		},
 		"metadata": {
@@ -64,7 +64,7 @@
 				"source": [
 					"linkservicename = \"cosmoseastusbp4\""
 				],
-				"execution_count": 6
+				"execution_count": 1
 			},
 			{
 				"cell_type": "code",
@@ -83,7 +83,7 @@
 					"\r\n",
 					"spark.conf.set(\"mydata.linkservicename\", linkservicename)"
 				],
-				"execution_count": 7
+				"execution_count": 2
 			},
 			{
 				"cell_type": "code",
@@ -109,7 +109,7 @@
 					"\r\n",
 					"val linkservicename = spark.conf.get(\"mydata.linkservicename\")"
 				],
-				"execution_count": 8
+				"execution_count": 3
 			},
 			{
 				"cell_type": "code",
@@ -136,7 +136,7 @@
 					"    option(\"spark.cosmos.container\", \"ps2\").\r\n",
 					"    load()"
 				],
-				"execution_count": 9
+				"execution_count": 4
 			}
 		]
 	}
