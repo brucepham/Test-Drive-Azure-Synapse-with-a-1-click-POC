@@ -3405,15 +3405,15 @@
 						"spark.dynamicAllocation.enabled": "false",
 						"spark.dynamicAllocation.minExecutors": "2",
 						"spark.dynamicAllocation.maxExecutors": "2",
-						"spark.autotune.trackingId": "d212c91f-3929-47cf-bed5-b68389147c7b"
+						"spark.autotune.trackingId": "01fadbc5-0aa9-4e91-b1f7-f81d7c15737f"
 					}
 				},
 				"metadata": {
 					"saveOutput": true,
 					"enableDebugMode": false,
 					"kernelspec": {
-						"name": "synapse_pyspark",
-						"display_name": "Synapse PySpark"
+						"name": "synapse_spark",
+						"display_name": "scala"
 					},
 					"language_info": {
 						"name": "scala"
@@ -3430,12 +3430,19 @@
 						"sparkVersion": "3.1",
 						"nodeCount": 10,
 						"cores": 8,
-						"memory": 56
-					}
+						"memory": 56,
+						"automaticScaleJobs": false
+					},
+					"sessionKeepAliveTimeout": 30
 				},
 				"cells": [
 					{
 						"cell_type": "code",
+						"metadata": {
+							"tags": [
+								"parameters"
+							]
+						},
 						"source": [
 							"val linkservicename = \"cosmoseastusbp3\""
 						],
