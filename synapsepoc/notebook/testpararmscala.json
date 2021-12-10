@@ -17,7 +17,7 @@
 				"spark.dynamicAllocation.enabled": "false",
 				"spark.dynamicAllocation.minExecutors": "2",
 				"spark.dynamicAllocation.maxExecutors": "2",
-				"spark.autotune.trackingId": "1c5ffaf2-bcb4-43c6-aa7a-2e72f0e90fd6"
+				"spark.autotune.trackingId": "c2cb0bbf-5af0-4e5d-9731-d5be2d22b795"
 			}
 		},
 		"metadata": {
@@ -65,7 +65,7 @@
 					]
 				},
 				"source": [
-					"linkservicename = \"cosmoseastusbp4\""
+					"linkservicename = \"cosmoseastusbp3\""
 				],
 				"execution_count": 1
 			},
