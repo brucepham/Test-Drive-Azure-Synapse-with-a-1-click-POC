@@ -28,7 +28,8 @@
 							"value": {
 								"value": "@pipeline().parameters.containernameparam",
 								"type": "Expression"
-							}
+							},
+							"type": "string"
 						}
 					},
 					"snapshot": true
