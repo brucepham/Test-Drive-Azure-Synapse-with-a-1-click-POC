@@ -17,15 +17,15 @@
 				"spark.dynamicAllocation.enabled": "false",
 				"spark.dynamicAllocation.minExecutors": "2",
 				"spark.dynamicAllocation.maxExecutors": "2",
-				"spark.autotune.trackingId": "e7ee2711-05eb-4dff-b8aa-1581d7019d81"
+				"spark.autotune.trackingId": "c82787e6-8cc2-4ac0-92f7-b75bfa970a50"
 			}
 		},
 		"metadata": {
 			"saveOutput": true,
 			"enableDebugMode": false,
 			"kernelspec": {
-				"name": "synapse_spark",
-				"display_name": "scala"
+				"name": "synapse_pyspark",
+				"display_name": "Synapse PySpark"
 			},
 			"language_info": {
 				"name": "scala"
@@ -56,9 +56,10 @@
 					]
 				},
 				"source": [
-					"val linkservicename = \"cosmoseastusbp4\""
+					"val linkservicename = \"cosmoseastusbp4\"\r\n",
+					"val containername = \"ps4\""
 				],
-				"execution_count": 1
+				"execution_count": 2
 			},
 			{
 				"cell_type": "code",
@@ -77,10 +78,10 @@
 					"val df = spark.read.\r\n",
 					"    format(\"cosmos.olap\").\r\n",
 					"    option(\"spark.synapse.linkedService\", linkservicename).\r\n",
-					"    option(\"spark.cosmos.container\", \"ps2\").\r\n",
+					"    option(\"spark.cosmos.container\", containername).\r\n",
 					"    load()"
 				],
-				"execution_count": 2
+				"execution_count": 3
 			}
 		]
 	}
