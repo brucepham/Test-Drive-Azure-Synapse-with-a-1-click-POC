@@ -394,8 +394,7 @@
 								"coreCount": 8,
 								"computeType": "General"
 							},
-							"traceLevel": "Fine",
-							"continuationSettings": {}
+							"traceLevel": "Fine"
 						}
 					},
 					{
@@ -3214,7 +3213,7 @@
 						"spark.dynamicAllocation.enabled": "false",
 						"spark.dynamicAllocation.minExecutors": "2",
 						"spark.dynamicAllocation.maxExecutors": "2",
-						"spark.autotune.trackingId": "7ec31d69-8e83-4d9e-a2b9-439449918147"
+						"spark.autotune.trackingId": "f9f35f21-7bfa-4229-b5a8-7facc81e6766"
 					}
 				},
 				"metadata": {
@@ -3256,7 +3255,10 @@
 								"transient": {
 									"deleting": false
 								}
-							}
+							},
+							"tags": [
+								"parameters"
+							]
 						},
 						"source": [
 							"linkservicename = \"cosmoseastusbp4\""
@@ -3299,9 +3301,7 @@
 							"microsoft": {
 								"language": "scala"
 							},
-							"tags": [
-								"parameters"
-							]
+							"tags": []
 						},
 						"source": [
 							"%%spark\r\n",
