@@ -159,6 +159,13 @@
 								"linkservicename": {
 									"value": "cosmoseastusbp3",
 									"type": "string"
+								},
+								"containername": {
+									"value": {
+										"value": "@pipeline().parameters.containernameparam",
+										"type": "Expression"
+									},
+									"type": "string"
 								}
 							},
 							"snapshot": true
@@ -168,6 +175,12 @@
 				"policy": {
 					"elapsedTimeMetric": {},
 					"cancelAfter": {}
+				},
+				"parameters": {
+					"containernameparam": {
+						"type": "string",
+						"defaultValue": "testme"
+					}
 				},
 				"annotations": []
 			},
@@ -3256,7 +3269,7 @@
 						"spark.dynamicAllocation.enabled": "false",
 						"spark.dynamicAllocation.minExecutors": "2",
 						"spark.dynamicAllocation.maxExecutors": "2",
-						"spark.autotune.trackingId": "0e92a611-becd-466e-86cb-f565193c9495"
+						"spark.autotune.trackingId": "8fb7dc76-aca7-46ae-aa2e-e83cd80e0f10"
 					}
 				},
 				"metadata": {
@@ -3405,15 +3418,15 @@
 						"spark.dynamicAllocation.enabled": "false",
 						"spark.dynamicAllocation.minExecutors": "2",
 						"spark.dynamicAllocation.maxExecutors": "2",
-						"spark.autotune.trackingId": "6aaf29ce-0d53-4acb-bc5e-a564b9ae05b4"
+						"spark.autotune.trackingId": "db134f01-343a-4df1-a341-6944df5b5f87"
 					}
 				},
 				"metadata": {
 					"saveOutput": true,
 					"enableDebugMode": false,
 					"kernelspec": {
-						"name": "synapse_spark",
-						"display_name": "scala"
+						"name": "synapse_pyspark",
+						"display_name": "Synapse PySpark"
 					},
 					"language_info": {
 						"name": "scala"
@@ -3430,10 +3443,8 @@
 						"sparkVersion": "3.1",
 						"nodeCount": 10,
 						"cores": 8,
-						"memory": 56,
-						"automaticScaleJobs": false
-					},
-					"sessionKeepAliveTimeout": 30
+						"memory": 56
+					}
 				},
 				"cells": [
 					{
