@@ -157,7 +157,7 @@
 							},
 							"parameters": {
 								"linkservicename": {
-									"value": "cosmoseastusbp4",
+									"value": "cosmoseastusbp3",
 									"type": "string"
 								}
 							},
@@ -3405,7 +3405,7 @@
 						"spark.dynamicAllocation.enabled": "false",
 						"spark.dynamicAllocation.minExecutors": "2",
 						"spark.dynamicAllocation.maxExecutors": "2",
-						"spark.autotune.trackingId": "9b90aea6-79cf-48c5-909b-420d0d425d30"
+						"spark.autotune.trackingId": "e7ee2711-05eb-4dff-b8aa-1581d7019d81"
 					}
 				},
 				"metadata": {
@@ -3430,10 +3430,8 @@
 						"sparkVersion": "3.1",
 						"nodeCount": 10,
 						"cores": 8,
-						"memory": 56,
-						"automaticScaleJobs": false
-					},
-					"sessionKeepAliveTimeout": 30
+						"memory": 56
+					}
 				},
 				"cells": [
 					{
